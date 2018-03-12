@@ -164,7 +164,10 @@ set_target_properties(Box2D PROPERTIES
     CLEAN_DIRECT_OUTPUT 1
     VERSION ${BOX2D_VERSION}
 )
-target_include_directories(Box2D PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/..")
+target_include_directories(Box2D PUBLIC
+    $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>
+    $<INSTALL_INTERFACE:/..>
+)
 
 # These are used to create visual studio folders.
 source_group(Collision FILES ${BOX2D_Collision_SRCS} ${BOX2D_Collision_HDRS})
